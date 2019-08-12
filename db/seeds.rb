@@ -15,7 +15,7 @@ Cuisine.destroy_all
 
 ##Each line should have a distinct label u1, u2, u3...r1, r2...
 #Users
-u1 = User.create({first_name: "Tom", last_name: "Jerry", email: "tjerry@yahoo.com", phone: "2120193318"})
+u1 = User.create({first_name: "Tom", last_name: "Jerry", email: "tjerry@yahoo.com", phone: "2120193318", password: "123", username: "tomjerry"})
 
 #Restaurants
 r1 = Restaurant.create({name: "Le Pain Violet", street: "201 Baker Street", city: "New York", state:"NY", zip_code: "11201", phone: "9170092138", email: "hello@lpv.ny"})
@@ -54,13 +54,13 @@ rc9 = RestaurantCuisine.create({restaurant: r9, cuisine: c10})
 #Items - restaurant field is a reference to one of the restaurant above. can mix them around - does not have to be one to one. a restaurant an be used multiple times
 i1 = Item.create({name: "Blueberry Banana French Toast", image: "placeholder", restaurant: r1, price: 8.95})
 i2 = Item.create({name: "Green Power Smoothie", image: "placeholder", restaurant: r1, price: 6.50})
-i3 = Item.create({name: "Western Omelet", image: "placeholder", restaurant r1, price: 7.95})
+i3 = Item.create({name: "Western Omelet", image: "placeholder", restaurant: r1, price: 7.95})
 i4 = Item.create({name: "Chicken Miso Ramen", image: "placeholder", restaurant: r2, price: 11.95})
 i5 = Item.create({name: "Cacio E Pepe", image: "placeholder", restaurant: r3, price: 17.95})
 i6 = Item.create({name: "Smoked Bacon Cheeseburger", image: "placeholder", restaurant: r4, price: 10.95})
 i7 = Item.create({name: "Truffle fries", image: "placeholder", restaurant: r4, price: 6.95})
 i8 = Item.create({name: "Grilled Portobello Burger", image: "placeholder", restaurant: r5, price: 9.50})
-i9 = Item.create({name: "Coco Berry Acai Bowl", image: "placeholder", restaurant r5, price: 7.50})
+i9 = Item.create({name: "Coco Berry Acai Bowl", image: "placeholder", restaurant: r5, price: 7.50})
 i10 = Item.create({name: "California Green Salad", image: "placeholder", restaurant: r5, price: 10.50})
 i11 = Item.create({name: "Banana Nut Bread", image: "placeholder", restaurant: r6, price: 4.50})
 i12 = Item.create({name: "Nitro Cold Brew", image: "placeholder", restaurant: r6, price: 4.95})
@@ -74,29 +74,29 @@ i19 = Item.create({name: "Skillet Cookie with Vanilla Ice Cream", image: "placeh
 i20 = Item.create({name: "1 Dozen Fresh Chocolate Chip Cookies", image: "placeholder", restaurant: r9, price: 9.95})
 
 #AlertNotes - anything you want here
-a1 = AlertNote.create({name: "Egg", type: "ALLERGEN"})
-a2 = AlertNote.create({name: "Milk", type: "ALLERGEN"})
-a3 = AlertNote.create({name: "Tree Nuts", type: "ALLERGEN"})
-a4 = AlertNote.create({name: "Peanut", type: "ALLERGEN"})
-a5 = AlertNote.create({name: "Shellfish", type: "ALLERGEN"})
-a6 = AlertNote.create({name: "Gluten", type: "ALLERGEN"})
-a7 = AlertNote.create({name: "Soy", type: "ALLERGEN"})
+a1 = AlertNote.create({name: "Egg", alert_type: 'ALLERGEN'})
+a2 = AlertNote.create({name: "Milk", alert_type: "ALLERGEN"})
+a3 = AlertNote.create({name: "Tree Nuts", alert_type: "ALLERGEN"})
+a4 = AlertNote.create({name: "Peanut", alert_type: "ALLERGEN"})
+a5 = AlertNote.create({name: "Shellfish", alert_type: "ALLERGEN"})
+a6 = AlertNote.create({name: "Gluten", alert_type: "ALLERGEN"})
+a7 = AlertNote.create({name: "Soy", alert_type: "ALLERGEN"})
 
-a8 = AlertNote.create({name: "Spicy", type: "PREFERENCE"})
-a9 = AlertNote.create({name: "Sweet", type: "PREFERENCE"})
-a10 = AlertNote.create({name: "Healthy", type: "PREFERENCE"})
-a11 = AlertNote.create({name: "Vegetarian", type: "PREFERENCE"})
+a8 = AlertNote.create({name: "Spicy", alert_type: "PREFERENCE"})
+a9 = AlertNote.create({name: "Sweet", alert_type: "PREFERENCE"})
+a10 = AlertNote.create({name: "Healthy", alert_type: "PREFERENCE"})
+a11 = AlertNote.create({name: "Vegetarian", alert_type: "PREFERENCE"})
 
-a12 = AlertNote.create({name: "Breakfast", type: "MEAL_TYPE"})
-a13 = AlertNote.create({name: "Lunch", type: "MEAL_TYPE"})
-a14 = AlertNote.create({name: "Dinner", type: "MEAL_TYPE"})
-a15 = AlertNote.create({name: "Quick", type: "MEAL_TYPE"})
-a16 = AlertNote.create({name: "Drink", type: "MEAL_TYPE"})
-a17 = AlertNote.create({name: "Snack", type: "MEAL_TYPE"})
+a12 = AlertNote.create({name: "Breakfast", alert_type: "MEAL_TYPE"})
+a13 = AlertNote.create({name: "Lunch", alert_type: "MEAL_TYPE"})
+a14 = AlertNote.create({name: "Dinner", alert_type: "MEAL_TYPE"})
+a15 = AlertNote.create({name: "Quick", alert_type: "MEAL_TYPE"})
+a16 = AlertNote.create({name: "Drink", alert_type: "MEAL_TYPE"})
+a17 = AlertNote.create({name: "Snack", alert_type: "MEAL_TYPE"})
 
 
 #ItemAlertNotes - an item can have many item alert notes they are basically tags/labels - but a new line for every alert
-#blueberry banana french toast has allergens: egg(a1), milk(a2), wheat(a6) and is preference: sweet(a9) and meal_type: breakfast(a10)
+#blueberry banana french toast has allergens: egg(a1), milk(a2), wheat(a6) and is preference: sweet(a9) and MEAL_TYPE: breakfast(a10)
 n1 = ItemAlertNote.create({item: i1, alert_note: a1})
 n2 = ItemAlertNote.create({item: i1, alert_note: a2})
 n3 = ItemAlertNote.create({item: i1, alert_note: a6})

@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
 
     def create
-        user = User.new(user_params)
+        user = User.new(
+            first_name: params[:first_name],
+            last_name: params[:last_name],
+            email: params[:email],
+            username: params[:username],
+            password: params[:password],
+        )
         if user.save
             render json: user
         else
-            render json: {error: "Cannot create user"}
+            render json: {error: "Username and/or email already taken."}
         end
     end
 
     private
 
-    def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password)
-    end
+   # def user_params
+    #    params.require(:user).permit(:first_name, :last_name, :email, :password, :username)
+    #end
 end

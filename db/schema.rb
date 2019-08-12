@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_172148) do
+ActiveRecord::Schema.define(version: 2019_08_12_140116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alert_notes", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "alert_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2019_08_11_172148) do
     t.float "tax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -96,6 +98,8 @@ ActiveRecord::Schema.define(version: 2019_08_11_172148) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "username"
   end
 
   add_foreign_key "item_alert_notes", "alert_notes"
@@ -103,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_172148) do
   add_foreign_key "items", "restaurants"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "users"
   add_foreign_key "restaurant_cuisines", "cuisines"
   add_foreign_key "restaurant_cuisines", "restaurants"
