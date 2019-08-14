@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         if user.save
             render json: user
         else
-            render json: {error: "Username and/or email already taken."}
+            render json: {errors: "An account already exists for this email."}
         end
     end
 

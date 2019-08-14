@@ -1,4 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :restaurant_id, :name, :price
-  has_many :item_alert_notes
+  attributes :id, :name, :price, :image
+  has_many :alert_notes
+  belongs_to :restaurant
 end
