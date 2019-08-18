@@ -15,6 +15,15 @@ class UsersController < ApplicationController
         end
     end
 
+    def get_orders
+        user = User.find(params[:user_id].to_i)
+        if user
+            render json: user.orders
+        else
+            render json: {errors: "Cannot retrieve orders."}
+        end
+    end
+
     private
 
    # def user_params

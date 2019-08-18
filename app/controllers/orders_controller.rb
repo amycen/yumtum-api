@@ -1,13 +1,7 @@
 class OrdersController < ApplicationController
 
     def create
-        order = Order.new(
-            user_id: params[:user_id],
-            status: params[:status],
-            subtotal: params[:subtotal],
-            tips: params[:tips],
-            tax: params[:tax]
-        )
+        order = Order.new(order_params)
         if order.save
             render json: order
         else
@@ -17,7 +11,7 @@ class OrdersController < ApplicationController
 
     private
 
-#    def order_params
- #       params.require(:order).permit(:user_id, :status, :subtotal, :tips, :tax)
-  #  end
+    def order_params
+        params.require(:order).permit(:user_id, :status, :subtotal, :tips, :tax, :restaurant_id)
+    end
 end
