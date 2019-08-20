@@ -8,10 +8,12 @@
 RestaurantCuisine.destroy_all
 ItemAlertNote.destroy_all
 AlertNote.destroy_all
-Item.destroy_all
+OrderItem.destroy_all
+Order.destroy_all
 User.destroy_all
-Restaurant.destroy_all
 Cuisine.destroy_all
+Item.destroy_all
+Restaurant.destroy_all
 
 ##Each line should have a distinct label u1, u2, u3...r1, r2...
 #Users
@@ -55,24 +57,34 @@ rc9 = RestaurantCuisine.create({restaurant: r9, cuisine: c10})
 #Items - restaurant field is a reference to one of the restaurant above. can mix them around - does not have to be one to one. a restaurant an be used multiple times
 i1 = Item.create({name: "Blueberry Banana French Toast", image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=774&q=80", restaurant: r1, price: 8.95})
 i2 = Item.create({name: "Green Power Smoothie", image: "https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80", restaurant: r1, price: 6.50})
-i3 = Item.create({name: "Western Omelet", image: "https://newsouthcharm.com/wp-content/uploads/2016/02/Western-Omelette-Frittata-Cover.jpg", restaurant: r1, price: 7.95})
-i4 = Item.create({name: "Chicken Miso Ramen", image: "https://static01.nyt.com/images/2018/10/29/dining/sd-miso-chicken-ramen/sd-miso-chicken-ramen-articleLarge-v2.jpg", restaurant: r2, price: 11.95})
+i3 = Item.create({name: "Good Morning Toast", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1253&q=80", restaurant: r1, price: 7.95})
+i4 = Item.create({name: "Spicy Shrimp Ramen", image: "https://images.unsplash.com/photo-1562618692-014578eccdde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r2, price: 11.95})
+i33 = Item.create({name: "Vegetarian Soba", image: "https://images.unsplash.com/photo-1565976469782-7c92daebc42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80", restaurant: r2, price: 9.95})
 i5 = Item.create({name: "Cacio E Pepe", image: "https://www.gimmesomeoven.com/wp-content/uploads/2018/04/How-To-Make-Cacio-e-Pepe-Recipe-5.jpg", restaurant: r3, price: 17.95})
 i6 = Item.create({name: "Smoked Bacon Cheeseburger", image: "https://images.unsplash.com/photo-1559067933-0293effe6133?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1098&q=80", restaurant: r4, price: 10.95})
-i7 = Item.create({name: "Truffle Fries", image: "https://images.unsplash.com/photo-1534938665420-4193effeacc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80", restaurant: r4, price: 6.95})
-i8 = Item.create({name: "Grilled Portobello Burger", image: "https://assets.epicurious.com/photos/57211f2ae3c948b60a813168/6:4/w_620%2Ch_413/IMG_2052-1.jpg", restaurant: r5, price: 9.50})
-i9 = Item.create({name: "Coco Berry Acai Bowl", image: "https://bitesbybai.files.wordpress.com/2018/05/strawberry-coconut-acai-bowl-1.jpg?w=1020", restaurant: r5, price: 7.50})
-i10 = Item.create({name: "California Green Salad", image: "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80", restaurant: r5, price: 10.50})
+i24 = Item.create({name: "Buttermilk Fried Chicken Sandwich", image: "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80", restaurant: r4, price: 8.95})
+i28 = Item.create({name: "Spicy Buffalo Meatballs", image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1233&q=80", restaurant: r4, price: 10.95})
+i7 = Item.create({name: "Handcut Fries", image: "https://images.unsplash.com/photo-1534938665420-4193effeacc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80", restaurant: r4, price: 6.95})
+i8 = Item.create({name: "Vegetable Tempura", image: "https://images.unsplash.com/photo-1471253387723-35c53c9f97ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80", restaurant: r5, price: 9.50})
+i9 = Item.create({name: "Blueberry Granola Parfait", image: "https://images.unsplash.com/photo-1552320764-9fc870798a3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80", restaurant: r5, price: 7.50})
+i10 = Item.create({name: "California Green Salad", image: "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r5, price: 10.50})
 i11 = Item.create({name: "Banana Nut Bread", image: "https://images.unsplash.com/photo-1552056711-84ca09c0a8cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=335&q=80", restaurant: r6, price: 4.50})
+i25 = Item.create({name: "Butternut Squash Soup", image: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r6, price: 4.95})
 i12 = Item.create({name: "Nitro Cold Brew", image: "https://images.unsplash.com/photo-1549652127-2e5e59e86a7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80", restaurant: r6, price: 4.95})
-i13 = Item.create({name: "Bacon Egg and Cheese Bagel", image: "https://data.thefeedfeed.com/recommended/post_2899718.jpeg", restaurant: r6, price: 4.95})
+i35 = Item.create({name: "Orange Marmalade Crepe", image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r6, price: 7.95})
+i30 = Item.create({name: "Edible Gold Laced Churros w/ Mexican Chocolate Dip", image: "https://images.unsplash.com/photo-1547149685-22d7efe78c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r6, price: 94.95})
+i13 = Item.create({name: "Homemade Strawberry Ice Cream", image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r6, price: 4.95})
 i14 = Item.create({name: "Avocado Toast", image: "https://images.unsplash.com/photo-1490323814405-4aa634235c2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", restaurant: r6, price: 6.95})
 i15 = Item.create({name: "Pan Fried Shrimp Dumplings", image: "https://images.unsplash.com/photo-1549978809-bf650a552a85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=740&q=80", restaurant: r7, price: 5.50})
 i16 = Item.create({name: "Spicy Hand-Pulled Beef Noodles", image: "https://cultureatz.com/wp-content/uploads/2017/04/Spicy-Beef-soup-pulled-noodles-4.jpg", restaurant: r7, price: 11.50})
-i17 = Item.create({name: "Al Pastor Tacos", image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", restaurant: r8, price: 6.00})
+i31 = Item.create({name: "Spicy Vegetable Soup", image: "https://images.unsplash.com/photo-1511910849309-0dffb8785146?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80", restaurant: r7, price: 12.50})
+i17 = Item.create({name: "Steak Tacos", image: "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80", restaurant: r8, price: 6.00})
 i18 = Item.create({name: "Guacamole With Chips", image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/04/guacamole-1.jpg", restaurant: r8, price: 5.00})
+i21 = Item.create({name: "Grilled Corn on the Cob", image: "https://images.unsplash.com/photo-1470119693884-47d3a1d1f180?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1294&q=80", restaurant: r8, price: 3.50})
 i19 = Item.create({name: "Skillet Cookie with Vanilla Ice Cream", image: "https://www.paleorunningmomma.com/wp-content/uploads/2016/10/skillet-cookies-7-600x900.jpg", restaurant: r9, price: 9.95})
 i20 = Item.create({name: "1 Dozen Fresh Chocolate Chip Cookies", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80", restaurant: r9, price: 9.95})
+i22 = Item.create({name: "Strawberry Yogurt", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80", restaurant: r9, price: 4.95})
+i23 = Item.create({name: "Raspberry Lavender Paleta", image: "https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80", restaurant: r9, price: 4.95})
 
 #AlertNotes - anything you want here
 a1 = AlertNote.create({name: "Egg", alert_type: 'ALLERGEN'})

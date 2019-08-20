@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
     def login
-        user = User.find_by(username: params[:username])
+        user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             render json: user
         else
