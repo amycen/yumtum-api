@@ -9,6 +9,13 @@ class OrderItemsController < ApplicationController
         end
     end
 
+    def show
+        order_item = OrderItem.find(params[:id])
+        if order_item
+            render json: order_item
+        end
+    end
+
 
     private
 
